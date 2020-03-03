@@ -6,13 +6,19 @@
             <title>Главная - Доска объявлений</title>
         </head>
         <body>
-            <hl=center>Объявления</hl=center>
+            <hl>Объявления</hl>
+            <div>
+                <a href="/bboard/">Главная</a>
+                {% for rubric in rubrics %}
+                <a href="/bboard/{{ rubric.pk }}/"> {{ rubric.name }} </a>
+                {% endfor %}
+            </div>
             {% for bb in bbs %}
             <div>
-            <h2>{{ bb.title }} </h2>
-            <p {{ bb.content }} </р>
-            <p> {{ bb.published|date:"d.m.y h:i:s"}} </p>
+                <h2>{{ bb.title }} </h2>
+                <p>{{ bb.content }} </р>
+                <p> {{ bb.published|date:"d.m.y h:i:s"}} </p>
             </div>
-            {% endfor %}
+                {% endfor %}
     </body>
 </html>
